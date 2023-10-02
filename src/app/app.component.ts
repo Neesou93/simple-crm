@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'simple-crm';
+
+  openSite(){
+    window.open('https://pascal-dietz.developerakademie.net/portfoliowebsite/')
+  }
 }
