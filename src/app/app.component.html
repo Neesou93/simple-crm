@@ -1,9 +1,26 @@
-<div style="height: 100vh; width: 100vw; max-width: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column;">
-  <h1 style="text-align: center; font-size: 3rem; color: white;">Hier entsteht das Simple-CRM für die Portfolioseite von
-    Pascal Dietz. <br> Gerne können Sie sich bereits dort
-    umschauen.<br>
-    Klicken Sie einfach auf das Bild unten.</h1>
-    <img src="/assets/img/I-am-Pascal.png" (click)="openSite()" style="width: 30vw;">
-  <h1 style="text-align: center; font-size: 3rem; color: white;">Here the Simple-CRM for the portfolio site of Pascal
-    Dietz is created. <br> You are welcome to look around there already. <br> Just click on the image above.</h1>
-</div>
+<mat-drawer-container class="mat-drawer-container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="side" [opened]="true">
+    <div class="navbar_logo">
+      PLATZ FÜR LOGO
+    </div>
+
+    <ul class="menu-items">
+      <li routerLink="/"><mat-icon>fact_check</mat-icon>Dashboard</li>
+      <li routerLink="/user"><mat-icon>account_box</mat-icon>User</li>
+      <li><mat-icon></mat-icon>Dashboard</li>
+    </ul>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <p>
+      <mat-toolbar>
+        <mat-icon class="menu-btn" (click)="drawer.toggle()">menu</mat-icon>
+        <span>Simple-CRM</span>
+      </mat-toolbar>
+    </p>
+    <div class="router-container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</mat-drawer-container>
