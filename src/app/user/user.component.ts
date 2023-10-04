@@ -13,25 +13,9 @@ import { Observable } from 'rxjs';
 export class UserComponent {
   firestore: Firestore = inject(Firestore);
   user: User = new User();
-  users$;
-  users;
-  unsubUsers;
 
 
   constructor(public dialog: MatDialog) {
-
-    this.unsubUsers = onSnapshot(this.getUsersRef(), (list) => {
-      list.forEach(element => {
-        console.log('collection ', element.data());
-      });
-    });
-
-    this.users$ = collectionData(this.getUsersRef());
-    this.users = this.users$.subscribe((list) => {
-      list.forEach(element => {
-        console.log('collection ', element);
-      });
-    })
   }
 
   async addUser(item: {}) {
@@ -45,7 +29,6 @@ export class UserComponent {
   }
 
   ngOnDestroy() {
-    this.users.unsubscribe();
   }
 
   openDialog() {

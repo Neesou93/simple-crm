@@ -1,15 +1,15 @@
-<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" class="d-none" id="progressbar"></mat-progress-bar>
 <h1 mat-dialog-title>Add User</h1>
 <div mat-dialog-content class="mat-dialog-content">
     <div>
         <mat-form-field class="mr-16" appearance="outline">
             <mat-label>First Name</mat-label>
-            <input [(ngModel)]="user.firstName" matInput placeholder="First Name">
+            <input [(ngModel)]="user.firstName" matInput placeholder="First Name" type="text">
 
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input [(ngModel)]="user.lastName" matInput placeholder="Last Name">
+            <input [(ngModel)]="user.lastName" matInput placeholder="Last Name" type="text">
         </mat-form-field>
     </div>
     <div>
@@ -23,17 +23,17 @@
     <div>
         <mat-form-field class="mat-form-field-100" appearance="outline">
             <mat-label>Street + House No.</mat-label>
-            <input [(ngModel)]="user.street" matInput placeholder="Street + House No.">
+            <input [(ngModel)]="user.street" matInput placeholder="Street + House No." type="text">
         </mat-form-field>
     </div>
     <div>
         <mat-form-field class="mr-16" appearance="outline">
             <mat-label>Zip code</mat-label>
-            <input [(ngModel)]="user.zipCode" matInput placeholder="Zip code">
+            <input [(ngModel)]="user.zipCode" matInput placeholder="Zip code" type="text">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>City</mat-label>
-            <input [(ngModel)]="user.city" matInput placeholder="City">
+            <input [(ngModel)]="user.city" matInput placeholder="City" type="text">
         </mat-form-field>
     </div>
 </div>

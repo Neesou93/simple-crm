@@ -23,9 +23,12 @@ export class DialogAddUserComponent {
   });
 
   saveUser(){
+    document.getElementById('progressbar')?.classList.remove('d-none');
     this.user.brithDate = this.brithDate.getTime();
     console.log(this.user)
     this.addUser(this.user.toJSON())
+    this.user = new User();
+    document.getElementById('progressbar')?.classList.add('d-none');
   }
 
   async addUser(item: {}) {
