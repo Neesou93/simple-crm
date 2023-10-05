@@ -1,0 +1,30 @@
+<div *ngFor="let data of userData">
+    <mat-card class="user-details-header">
+        <button mat-icon-button class="edit-button" [matMenuTriggerFor]="userMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #userMenu="matMenu">
+            <button mat-menu-item (click)="editUserDialog()">Edit</button>
+          </mat-menu>
+    <img class="profile-img" src="./assets/img/profile.png">
+    <div class="user-details">
+        <h2>{{ data.firstName }} {{ data.lastName }}</h2>
+        {{ data.email }}
+    </div>
+</mat-card>
+<mat-card class="mt-32">
+    <button mat-icon-button class="edit-button" [matMenuTriggerFor]="adressMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #adressMenu="matMenu">
+        <button mat-menu-item (click)="editAdressDialog()">Edit</button>
+      </mat-menu>
+    <mat-card-header>
+        <mat-card-title>Address</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        {{ data.street }} <br>
+        {{ data.city }}
+    </mat-card-content>
+</mat-card>
+</div>

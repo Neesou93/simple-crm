@@ -14,8 +14,14 @@
     </div>
     <div>
         <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>E-Mail</mat-label>
+            <input [(ngModel)]="user.email" matInput placeholder="E-Mail" type="text">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
             <mat-label>Birth date</mat-label>
-            <input [(ngModel)]="brithDate" matInput placeholder="DD/MM/YYYY" [matDatepicker]="picker1">
+            <input [(ngModel)]="brithDate" matInput placeholder="MM/DD/YYYY" [matDatepicker]="picker1">
             <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
@@ -38,6 +44,6 @@
     </div>
 </div>
 <div mat-dialog-actions>
-    <button mat-button>Cancel</button>
+    <button mat-button (click)="dialogRef.close()" >Cancel</button>
     <button mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
 </div>

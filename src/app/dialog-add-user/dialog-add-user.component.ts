@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { User } from 'src/models/user.class';
 import { Firestore, addDoc, collection, collectionData, doc, onSnapshot } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -12,8 +13,9 @@ export class DialogAddUserComponent {
   firestore: Firestore = inject(Firestore);
   user = new User();
   brithDate:any;
+  loading:boolean = false;
 
-  constructor(){
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>){
   }
 
   unsubUsers = onSnapshot(this.getUsersRef(), (list) => {
@@ -23,9 +25,8 @@ export class DialogAddUserComponent {
   });
 
   saveUser(){
-    document.getElementById('progressbar')?.classList.remove('d-none');
+    this.loading = true;
     this.user.brithDate = this.brithDate.getTime();
-    console.log(this.user)
     this.addUser(this.user.toJSON())
     this.user = new User();
     document.getElementById('progressbar')?.classList.add('d-none');
@@ -33,10 +34,11 @@ export class DialogAddUserComponent {
 
   async addUser(item: {}) {
     await addDoc(this.getUsersRef(), item).catch(
-      (err) => { console.log(err) }
+      (err) => { alert("Something didn't work here. Please try again later or contact your administrator. ") }
     ).then(
       (docRef) => {
-        console.log('Document written with ID: ', docRef?.id)
+        this.loading = false;
+        this.dialogRef.close();
       }
     )
   }

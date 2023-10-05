@@ -1,5 +1,52 @@
-.fab-btn-add{
+.fab-btn-add {
     position: absolute;
     right: 56px;
     bottom: 56px;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tr {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+
+        &:first-child {
+            cursor: unset;
+
+            &:hover {
+                background-color: transparent;
+            }
+
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        th {
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 1.2rem;
+            text-align: start;
+            height: 48px;
+
+            &:first-child {
+                padding-left: 16px;
+            }
+        }
+
+        td {
+            height: 48px;
+
+            &:first-child {
+                padding-left: 16px;
+            }
+        }
+    }
+
 }
