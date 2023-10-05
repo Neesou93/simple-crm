@@ -1,8 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, doc, onSnapshot } from '@angular/fire/firestore';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/models/user.class';
+import { Firestore, collection, doc, updateDoc } from '@angular/fire/firestore';
+import { MatDialogRef } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-dialog-edit-user',
@@ -10,16 +9,14 @@ import { User } from 'src/models/user.class';
   styleUrls: ['./dialog-edit-user.component.scss']
 })
 export class DialogEditUserComponent implements OnInit {
+  firestore: Firestore = inject(Firestore);
 
   user: any;
   loading: boolean = false;
   userData: any;
 
   ngOnInit() {
-    console.log(this.user)
     this.userData = this.toJSON(this.user[0])
-    console.log(this.userData);
-
   }
 
   toJSON(data: any) {
@@ -30,11 +27,28 @@ export class DialogEditUserComponent implements OnInit {
       brithDate: data.brithDate,
       street: data.street,
       zipCode: data.zipCode,
-      city: data.city
+      city: data.city,
+      id: data.id
     }
   }
 
   constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>) { }
 
-  saveUser() { }
+  saveUser() {
+    this.loading = true;
+    this.updateUserFDB(this.userData);
+    
+   }
+
+  async updateUserFDB(item:any){
+    await updateDoc(this.getSingleDocRef('users',this.userData.id), item)
+    .catch((err) => {console.error(err);
+    }).then(() => {
+      this.loading = false;
+      this.dialogRef.close();
+    });}
+
+  getSingleDocRef(colID: string, docID: string) {
+    return doc(collection(this.firestore, colID), docID);
+  }
 }

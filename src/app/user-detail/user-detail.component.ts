@@ -24,7 +24,6 @@ export class UserDetailComponent implements OnInit{
   ngOnInit(){
     this.route.paramMap.subscribe( paramMap => {
       this.userID = paramMap.get('id');
-      console.log(this.userID);
     });
 
     this.unsubSingel = this.subUserData();
@@ -35,7 +34,6 @@ export class UserDetailComponent implements OnInit{
     return onSnapshot(this.getSingleDocRef('users', this.userID), (list) => {
       this.userData = []
         this.userData.push(this.setUsersObject(list.data(),list.id));  
-        console.log(this.userData);    
     });
   }
 
