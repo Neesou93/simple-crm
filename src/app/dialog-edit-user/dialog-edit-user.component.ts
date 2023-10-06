@@ -14,9 +14,13 @@ export class DialogEditUserComponent implements OnInit {
   user: any;
   loading: boolean = false;
   userData: any;
+  birthDate: any;
 
   ngOnInit() {
     this.userData = this.toJSON(this.user[0])
+    console.log(this.userData.birthDate)
+    this.birthDate = new Date(this.userData.birthDate);
+    console.log(this.birthDate)
   }
 
   toJSON(data: any) {
@@ -24,7 +28,7 @@ export class DialogEditUserComponent implements OnInit {
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
-      brithDate: data.brithDate,
+      birthDate: data.birthDate,
       street: data.street,
       zipCode: data.zipCode,
       city: data.city,
@@ -36,6 +40,7 @@ export class DialogEditUserComponent implements OnInit {
 
   saveUser() {
     this.loading = true;
+    this.userData.birthDate = this.birthDate.getTime()
     this.updateUserFDB(this.userData);
     
    }

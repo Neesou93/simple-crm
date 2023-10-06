@@ -17,6 +17,7 @@ export class UserDetailComponent implements OnInit{
   userData: any = [];
   userID: any = '';
   unsubSingel:any;
+  birthDate:any;
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog){
   }
@@ -27,13 +28,15 @@ export class UserDetailComponent implements OnInit{
     });
 
     this.unsubSingel = this.subUserData();
-    this.user = this.userData;
   }
 
   subUserData(){
     return onSnapshot(this.getSingleDocRef('users', this.userID), (list) => {
       this.userData = []
-        this.userData.push(this.setUsersObject(list.data(),list.id));  
+        this.userData.push(this.setUsersObject(list.data(),list.id)); 
+        console.log(this.userData[0].birthDate);
+        this.birthDate = new Date(this.userData[0].birthDate).toLocaleDateString('de-DE'); 
+        this.user = this.userData;
     });
   }
 
@@ -43,7 +46,7 @@ export class UserDetailComponent implements OnInit{
       firstName: obj.firstName || '',
       lastName: obj.lastName || '',
       email: obj.email || '',
-      brithDate: obj.brithDate || '',
+      birthDate: obj.birthDate || '',
       street: obj.street || '',
       zipCode: obj.zipCode || '',
       city: obj.city || ''

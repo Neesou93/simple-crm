@@ -12,7 +12,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DialogAddUserComponent {
   firestore: Firestore = inject(Firestore);
   user = new User();
-  brithDate:any;
+  birthDate:any;
   loading:boolean = false;
 
   constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>){
@@ -26,7 +26,7 @@ export class DialogAddUserComponent {
 
   saveUser(){
     this.loading = true;
-    this.user.brithDate = this.brithDate.getTime();
+    this.user.birthDate = this.birthDate.getTime();
     this.addUser(this.user.toJSON())
     this.user = new User();
     document.getElementById('progressbar')?.classList.add('d-none');

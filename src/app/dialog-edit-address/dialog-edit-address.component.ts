@@ -22,7 +22,7 @@ export class DialogEditAddressComponent {
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
-      brithDate: data.brithDate,
+      birthDate: data.birthDate,
       street: data.street,
       zipCode: data.zipCode,
       city: data.city,
