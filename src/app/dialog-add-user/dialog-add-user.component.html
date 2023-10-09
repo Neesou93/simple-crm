@@ -20,10 +20,26 @@
     </div>
     <div>
         <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>Phone-Number</mat-label>
+            <input [(ngModel)]="user.phone" matInput placeholder="Phonenumber" type="phonenumber">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
             <mat-label>Birth date</mat-label>
             <input [(ngModel)]="birthDate" matInput placeholder="MM/DD/YYYY" [matDatepicker]="picker1">
             <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>Department</mat-label>
+            <mat-select [(ngModel)]="user.department" name="food">
+                <mat-option *ngFor="let department of departments" [value]="department">
+                    {{department}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
     </div>
     <div>
@@ -44,6 +60,6 @@
     </div>
 </div>
 <div mat-dialog-actions>
-    <button mat-button (click)="dialogRef.close()" >Cancel</button>
+    <button mat-button (click)="dialogRef.close()">Cancel</button>
     <button mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
 </div>

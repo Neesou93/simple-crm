@@ -28,6 +28,11 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
+import {MatSelectModule} from '@angular/material/select';
+import { CustomersComponent } from './customers/customers.component';
+import { EventsComponent } from './events/events.component';
+import { NotesComponent } from './notes/notes.component';
+import { DialogAddCustomerComponent } from './dialog-add-customer/dialog-add-customer.component';
 
 
 @NgModule({
@@ -38,7 +43,11 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
     DialogAddUserComponent,
     UserDetailComponent,
     DialogEditAddressComponent,
-    DialogEditUserComponent
+    DialogEditUserComponent,
+    CustomersComponent,
+    EventsComponent,
+    NotesComponent,
+    DialogAddCustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +67,7 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
     MatProgressBarModule,
     MatCardModule,
     MatMenuModule,
+    MatSelectModule,
     
     
     provideFirebaseApp(() => initializeApp(environment.firebase)),

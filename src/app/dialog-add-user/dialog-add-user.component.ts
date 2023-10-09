@@ -15,6 +15,8 @@ export class DialogAddUserComponent {
   birthDate:any;
   loading:boolean = false;
 
+  departments = ['Developer','Human-Resorces','Sales','Consultond']
+
   constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>){
   }
 
@@ -28,8 +30,6 @@ export class DialogAddUserComponent {
     this.loading = true;
     this.user.birthDate = this.birthDate.getTime();
     this.addUser(this.user.toJSON())
-    this.user = new User();
-    document.getElementById('progressbar')?.classList.add('d-none');
   }
 
   async addUser(item: {}) {
@@ -53,5 +53,6 @@ export class DialogAddUserComponent {
   getSingleDocRef(colID: string, docID: string) {
     return doc(collection(this.firestore, colID), docID);
   }
+  
   
 }

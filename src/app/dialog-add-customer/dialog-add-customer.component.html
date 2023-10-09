@@ -1,0 +1,70 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading" id="progressbar"></mat-progress-bar>
+<h1 mat-dialog-title>Add User</h1>
+<div mat-dialog-content class="mat-dialog-content">
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input [(ngModel)]="customer.name" matInput placeholder="Name" type="text">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>E-Mail</mat-label>
+            <input [(ngModel)]="customer.email" matInput placeholder="E-Mail" type="text">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>Phone-Number</mat-label>
+            <input [(ngModel)]="customer.phone" matInput placeholder="Phonenumber" type="phonenumber">
+        </mat-form-field>
+    </div>
+    
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>Branche</mat-label>
+            <mat-select [(ngModel)]="customer.branche" name="food">
+                <mat-option *ngFor="let department of branche" [value]="department">
+                    {{department}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div *ngIf="customer.branche == 'Sonstige'">
+        <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>Enter here Branche if "Sonstige"</mat-label>
+            <input [(ngModel)]="brancheIfAny" matInput placeholder='Enter here Branche if "Sonstige"' type="text">
+        </mat-form-field>
+    </div>  
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>Manged By</mat-label>
+            <mat-select [(ngModel)]="customer.customer_manager" name="food">
+                <mat-option></mat-option>
+                <mat-option *ngFor="let user of userList" [value]="user.id">
+                    {{user.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>  
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>Street + House No.</mat-label>
+            <input [(ngModel)]="customer.street" matInput placeholder="Street + House No." type="text">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="mr-16" appearance="outline">
+            <mat-label>Zip code</mat-label>
+            <input [(ngModel)]="customer.zipCode" matInput placeholder="Zip code" type="text">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input [(ngModel)]="customer.city" matInput placeholder="City" type="text">
+        </mat-form-field>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close()">Cancel</button>
+    <button mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
+</div>

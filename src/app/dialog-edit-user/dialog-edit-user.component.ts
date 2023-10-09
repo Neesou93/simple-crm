@@ -11,6 +11,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DialogEditUserComponent implements OnInit {
   firestore: Firestore = inject(Firestore);
 
+  departments = ['Developer','Human-Resorces','Sales','Consultond']
   user: any;
   loading: boolean = false;
   userData: any;
@@ -32,7 +33,9 @@ export class DialogEditUserComponent implements OnInit {
       street: data.street,
       zipCode: data.zipCode,
       city: data.city,
-      id: data.id
+      id: data.id,
+      phone: data.phone,
+      department: data.department,
     }
   }
 
@@ -45,7 +48,7 @@ export class DialogEditUserComponent implements OnInit {
     
    }
 
-  async updateUserFDB(item:any){
+  async updateUserFDB(item:any){    
     await updateDoc(this.getSingleDocRef('users',this.userData.id), item)
     .catch((err) => {console.error(err);
     }).then(() => {

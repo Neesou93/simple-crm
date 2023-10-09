@@ -27,6 +27,8 @@ export class DialogEditAddressComponent {
       zipCode: data.zipCode,
       city: data.city,
       id: data.id,
+      phone: data.phone,
+      department: data.department,
     };
   }
 
