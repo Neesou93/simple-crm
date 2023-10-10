@@ -6,7 +6,7 @@
             <th [class.center]="sortedPhone"(click)="sortBy('phone')">Phone <mat-icon *ngIf="sortedPhone">keyboard_arrow_down</mat-icon></th>
             <th [class.center]="sortedBranche"(click)="sortBy('department')">Branche <mat-icon *ngIf="sortedBranche">keyboard_arrow_down</mat-icon></th>
         </tr>
-        <tr *ngFor="let customer of sortedList" [routerLink]="['/customer/' + customer.id]">
+        <tr *ngFor="let customer of sortedList" [routerLink]="['/customers/' + customer.id]">
             <td>{{ customer.name }}</td>
             <td>{{ customer.email }}</td>
             <td>{{ customer.phone }}</td>

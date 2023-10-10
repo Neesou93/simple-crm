@@ -47,6 +47,7 @@ export class UserDetailComponent implements OnInit {
       this.user = this.userData;
       this.customerList = this.userData[0].customers;
       console.log(this.customerList);
+      this.customersData = [];
       this.customerList.forEach((element) => {
         this.subCustomerData(element);
       });
@@ -86,6 +87,7 @@ export class UserDetailComponent implements OnInit {
       phone: obj.phone || '',
       customer_manager: obj.customer_manager || '',
       branche: obj.branche || '',
+      profit_per_year: obj.profit_per_year || 0,
     };
   }
 

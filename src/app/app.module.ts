@@ -33,6 +33,9 @@ import { CustomersComponent } from './customers/customers.component';
 import { EventsComponent } from './events/events.component';
 import { NotesComponent } from './notes/notes.component';
 import { DialogAddCustomerComponent } from './dialog-add-customer/dialog-add-customer.component';
+import { CustomerDetailsComponent } from './customer-details/customer-details.component';
+import { DialogEditCustomerComponent } from './dialog-edit-customer/dialog-edit-customer.component';
+import { DialogEditCustomerAddressComponent } from './dialog-edit-customer-address/dialog-edit-customer-address.component';
 
 
 @NgModule({
@@ -47,7 +50,10 @@ import { DialogAddCustomerComponent } from './dialog-add-customer/dialog-add-cus
     CustomersComponent,
     EventsComponent,
     NotesComponent,
-    DialogAddCustomerComponent
+    DialogAddCustomerComponent,
+    CustomerDetailsComponent,
+    DialogEditCustomerComponent,
+    DialogEditCustomerAddressComponent
   ],
   imports: [
     BrowserModule,

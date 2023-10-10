@@ -1,0 +1,25 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading" id="progressbar"></mat-progress-bar>
+<h1 mat-dialog-title>Edit Profit</h1>
+<div mat-dialog-content class="mat-dialog-content">
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>Street + No.</mat-label>
+            <input [disabled]="loading" [(ngModel)]="customerData.street" matInput placeholder="Street + No." type="text">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>Zip-Code</mat-label>
+            <input [disabled]="loading" [(ngModel)]="customerData.zipCode" matInput placeholder="Zip-Code" type="text">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>City</mat-label>
+            <input [disabled]="loading" [(ngModel)]="customerData.city" matInput placeholder="City" type="text">
+        </mat-form-field>
+    </div>
+<div mat-dialog-actions>
+    <button [disabled]="loading" mat-button (click)="dialogRef.close()" >Cancel</button>
+    <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
+</div>

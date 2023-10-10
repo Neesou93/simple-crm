@@ -1,0 +1,71 @@
+<div *ngFor="let data of customerData">
+    <mat-card class="user-details-header">
+      <button mat-icon-button class="edit-button" [matMenuTriggerFor]="userMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="editUserDialog()">Edit</button>
+      </mat-menu>
+      <div style="display: flex;">
+        <img class="profile-img" src="./assets/img/profile.png">
+        <div class="user-details">
+          <h2>{{ data.name }}</h2>
+          <p class="infos-header-text">{{ data.email }} <br>
+            {{ data.branche }} <br> {{ data.phone }}</p>
+        </div>
+      </div>
+  
+      <div>
+        <h2>Customer Manger:</h2>
+        <p>{{ managerName }}</p>
+      </div>
+    </mat-card>
+    <mat-card class="mt-32">
+      <button mat-icon-button class="edit-button" [matMenuTriggerFor]="adressMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #adressMenu="matMenu">
+        <button mat-menu-item (click)="editAdressDialog()">Edit</button>
+      </mat-menu>
+      <mat-card-header>
+        <mat-card-title>Address</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        {{ data.street }} <br>
+        {{ data.zipCode }} {{ data.city }}
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="mt-32">
+      <mat-card-header>
+        <mat-card-title>Customers managed</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table class="user-table">
+          <tr>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Phone</th>
+          </tr>
+          <tr *ngFor="let user of userData">
+              <td>{{ user.firstName }} {{ user.lastName }}</td>
+              <td>{{ user.department }}</td>
+              <td>{{ user.phone }}</td>
+          </tr>
+      </table>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="mt-32">
+        <button mat-icon-button class="edit-button" [matMenuTriggerFor]="profitMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #profitMenu="matMenu">
+            <button mat-menu-item (click)="editProfitDialog()">Edit</button>
+          </mat-menu>
+        <mat-card-header>
+          <mat-card-title>Profit per Year</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h1>{{ data.profit_per_year }}€</h1>
+        </mat-card-content>
+      </mat-card>
+  </div>

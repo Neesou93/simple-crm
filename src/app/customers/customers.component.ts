@@ -24,6 +24,7 @@ export class CustomersComponent {
   sortedPhone: boolean = false;
   sortedBranche: boolean = false;
   sortedList: any;
+  userName:string = '';
   unSubCustomers
 
   constructor(public dialog: MatDialog) {
@@ -53,11 +54,14 @@ export class CustomersComponent {
     return onSnapshot(this.getCustomerRef(), (list) => {
       this.customers = [];
       list.forEach((element) => {
-        this.customers.push(this.setCustomerObject(element.data(), element.id));
+        let userID = element.data();
+        let userID_1 = userID['customer_manager']
+        let subuserName = this.subUser(userID_1)
+        console.log(this.userName);
+        this.customers.push(this.setCustomerObject(element.data(), element.id, this.userName));
       });
       this.sortedList = this.sortByKey(this.customers, 'name');
       console.log(this.sortedList);
-      
     });
   }
 
@@ -65,7 +69,7 @@ export class CustomersComponent {
     return doc(collection(this.firestore, colID), docID);
   }
 
-  setCustomerObject(obj: any, id: any) {
+  setCustomerObject(obj: any, id: any, name:any) {
     return {
       id: id,
       name: obj.name || '',
@@ -76,6 +80,8 @@ export class CustomersComponent {
       phone: obj.phone || '',
       branche: obj.branche || '',
       customer_manager: obj.customer_manager || '',
+      customer_name: name,
+      profit_per_year: obj.profit_per_year || 0,
     };
   }
 
@@ -89,6 +95,26 @@ export class CustomersComponent {
       city: data.city,
       phone: data.phone,
       department: data.department,
+    };
+  }
+  subUser(docID:string) {
+    return onSnapshot(this.getSingleDocRef('users', docID), (list) => {
+      let user = list.data()
+      this.userName = user? user['firstName'] + ' ' + user['lastName'] : ''
+      console.log('User: ', list.data());
+      console.log('Username: ', this.userName);
+      
+    });
+  }
+
+  getUsersRef() {
+    return collection(this.firestore, 'users');
+  }
+
+  setUsersObject(obj: any, id: any) {
+    return {
+      id: id,
+      name: obj.firstName + ' ' + obj.lastName || '',
     };
   }
 

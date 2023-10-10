@@ -1,0 +1,13 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading" id="progressbar"></mat-progress-bar>
+<h1 mat-dialog-title>Edit Profit</h1>
+<div mat-dialog-content class="mat-dialog-content">
+    <div>
+        <mat-form-field class="mat-form-field-100" appearance="outline">
+            <mat-label>Profit per Year</mat-label>
+            <input [disabled]="loading" [(ngModel)]="customerData.profit_per_year" matInput placeholder="Profit per Year" type="number">
+        </mat-form-field>
+    </div>
+<div mat-dialog-actions>
+    <button [disabled]="loading" mat-button (click)="dialogRef.close()" >Cancel</button>
+    <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
+</div>
