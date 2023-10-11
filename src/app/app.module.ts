@@ -36,6 +36,7 @@ import { DialogAddCustomerComponent } from './dialog-add-customer/dialog-add-cus
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { DialogEditCustomerComponent } from './dialog-edit-customer/dialog-edit-customer.component';
 import { DialogEditCustomerAddressComponent } from './dialog-edit-customer-address/dialog-edit-customer-address.component';
+import { DialogEditCustomerHeaderinfoComponent } from './dialog-edit-customer-headerinfo/dialog-edit-customer-headerinfo.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { DialogEditCustomerAddressComponent } from './dialog-edit-customer-addre
     DialogAddCustomerComponent,
     CustomerDetailsComponent,
     DialogEditCustomerComponent,
-    DialogEditCustomerAddressComponent
+    DialogEditCustomerAddressComponent,
+    DialogEditCustomerHeaderinfoComponent
   ],
   imports: [
     BrowserModule,

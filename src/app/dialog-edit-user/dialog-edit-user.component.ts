@@ -19,9 +19,7 @@ export class DialogEditUserComponent implements OnInit {
 
   ngOnInit() {
     this.userData = this.toJSON(this.user[0])
-    console.log(this.userData.birthDate)
     this.birthDate = new Date(this.userData.birthDate);
-    console.log(this.birthDate)
   }
 
   toJSON(data: any) {

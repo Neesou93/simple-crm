@@ -56,7 +56,7 @@ export class UserDetailComponent implements OnInit {
 
   subCustomerData(customerID: string) {
     return onSnapshot(this.getSingleDocRef('customers', customerID), (list) => {
-      this.customersData.push(this.setCustomerObject(list.data()));
+      this.customersData.push(this.setCustomerObject(list.data(), customerID));
       console.log('Daten: ', this.customersData);
     });
   }
@@ -77,8 +77,9 @@ export class UserDetailComponent implements OnInit {
     };
   }
 
-  setCustomerObject(obj: any) {
+  setCustomerObject(obj: any, id:any) {
     return {
+      id: obj.id || id, 
       name: obj.name || '',
       email: obj.email || '',
       street: obj.street || '',

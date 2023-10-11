@@ -52,7 +52,7 @@
             <th>Branche</th>
             <th>Phone</th>
         </tr>
-        <tr *ngFor="let customer of customersData">
+        <tr *ngFor="let customer of customersData" [routerLink]="['/customers/' + customer.id]">
             <td>{{ customer.name }}</td>
             <td>{{ customer.branche }}</td>
             <td>{{ customer.phone }}</td>

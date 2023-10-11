@@ -46,7 +46,7 @@
               <th>Department</th>
               <th>Phone</th>
           </tr>
-          <tr *ngFor="let user of userData">
+          <tr *ngFor="let user of userData" [routerLink]="['/user/' + user.id]">
               <td>{{ user.firstName }} {{ user.lastName }}</td>
               <td>{{ user.department }}</td>
               <td>{{ user.phone }}</td>

@@ -6,6 +6,7 @@ import { Customer } from 'src/models/customer.class';
 import { DialogEditCustomerComponent } from '../dialog-edit-customer/dialog-edit-customer.component';
 import { DialogAddCustomerComponent } from '../dialog-add-customer/dialog-add-customer.component';
 import { DialogEditCustomerAddressComponent } from '../dialog-edit-customer-address/dialog-edit-customer-address.component';
+import { DialogEditCustomerHeaderinfoComponent } from '../dialog-edit-customer-headerinfo/dialog-edit-customer-headerinfo.component';
 
 @Component({
   selector: 'app-customer-details',
@@ -97,8 +98,8 @@ export class CustomerDetailsComponent {
    dialog.componentInstance.customer = this.customerData;
   }
   editUserDialog() {
-   // const dialog = this.dialog.open(DialogEditUserComponent);
-   // dialog.componentInstance.user = this.userData;
+   const dialog = this.dialog.open(DialogEditCustomerHeaderinfoComponent);
+   dialog.componentInstance.customer = this.customerData;
   }
 
   editProfitDialog() {

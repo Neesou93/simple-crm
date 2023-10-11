@@ -1,1 +1,20 @@
-<p>events works!</p>
+<mat-card>
+    <table class="user-table">
+        <tr>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+        <tr *ngFor="let event of events" [routerLink]="['/events/' + events.id]">
+            <td>{{ event.title }}</td>
+            <td>{{ event.location }}</td>
+            <td>{{ event.dateClear }}</td>
+            <td>{{ event.time }}</td>
+        </tr>
+    </table>
+</mat-card>
+<button (click)="openDialog()" mat-fab color="primary" class="fab-btn-add" matTooltip="Add new Event"
+    [matTooltipPosition]="'above'">
+    <mat-icon>add</mat-icon>
+</button>

@@ -48,6 +48,9 @@ export class DialogAddCustomerComponent {
 
   saveUser() {
     this.loading = true;
+    if (this.customer.branche === 'Sonstige' && !(this.brancheIfAny == '')) {
+      this.customer.branche = this.brancheIfAny
+    }
     this.addUser(this.customer.toJSON());
   }
 
@@ -65,7 +68,7 @@ export class DialogAddCustomerComponent {
       });
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 
   getCustomerRef() {
     return collection(this.firestore, 'customers');
@@ -148,7 +151,7 @@ export class DialogAddCustomerComponent {
       .catch((err) => {
         console.error(err);
       })
-      .then(() => {});
+      .then(() => { });
   }
 
   toJSON(data: any) {
